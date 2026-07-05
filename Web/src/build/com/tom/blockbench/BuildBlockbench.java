@@ -15,9 +15,9 @@ public class BuildBlockbench {
 
 	public static void main(String[] args0) {
 		Pair<File, File> in = main(false, true);
-		File out = new File(args0[0], "Blockbench\\cpm_plugin.js");
+		File out = new File(args0[0], "Blockbench/cpm_plugin.js");
 		copy(in.getKey(), out);
-		out = new File(args0[0], "Blockbench\\cpm_plugin.map");
+		out = new File(args0[0], "Blockbench/cpm_plugin.map");
 		copy(in.getValue(), out);
 		out = new File(args0[1], "blockbench_plugin-" + VERSION + ".js");
 		copy(in.getKey(), out);
