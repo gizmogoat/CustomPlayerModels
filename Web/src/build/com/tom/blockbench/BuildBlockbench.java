@@ -11,7 +11,7 @@ import com.tom.cpl.util.Pair;
 import com.tom.cpm.web.gwt.ClasspathFix;
 
 public class BuildBlockbench {
-	public static final String VERSION = "0.6.26_pre1";
+	public static final String VERSION = "0.6.27_pre1";
 
 	public static void main(String[] args0) {
 		Pair<File, File> in = main(false, true);
@@ -45,7 +45,9 @@ public class BuildBlockbench {
 
 	private static void buildGwt(String version, File f, String mode, boolean debug) {
 		//"-Xdebug", "-Xrunjdwp:server=n,transport=dt_socket,address=4013,suspend=y"
-		String[] args = new String[] {"java", "-cp", ClasspathFix.getFixedClasspath(), "-Dugwt.sourcemap=http://localhost:8000/src/cpmblockbench.map", "com.tom.cpm.web.gwt.MainWrapper", debug ? "--buildDebug" : "--build", version, mode};
+		String javaHome = System.getProperty("java.home");
+		String javaBin = javaHome + File.separator + "bin" + File.separator + "java";
+		String[] args = new String[] {javaBin, "-cp", ClasspathFix.getFixedClasspath(), "-Dugwt.sourcemap=http://localhost:8000/src/cpmblockbench.map", "com.tom.cpm.web.gwt.MainWrapper", debug ? "--buildDebug" : "--build", version, mode};
 		ProcessBuilder pb = new ProcessBuilder(args);
 		pb.directory(f);
 		pb.inheritIO();
